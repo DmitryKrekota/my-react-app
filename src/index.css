@@ -3,3 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.thinker-container {
+  position: relative;
+  margin: 0 auto;
+  width: 250px;
+  overflow: hidden;
+}
+
+.hat {
+  position: absolute;
+  left: 120px;
+  top: -10px;
+}
