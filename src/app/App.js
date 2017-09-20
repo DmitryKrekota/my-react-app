@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import createReactClass from 'create-react-class';
-import logo from './logo.svg';
-import './App.css';
+import logo from './../logo.svg';
 
 class App extends Component {
     constructor(props) {
@@ -68,7 +67,7 @@ const Thinker = () => (
 
 const ThinkerWithHat = ({hat}) => (
     <div className="thinker-container">
-        <Thinker />
+        <Thinker/>
         <Hat type={hat}/>
     </div>
 );
@@ -76,12 +75,12 @@ const ThinkerWithHat = ({hat}) => (
 const HatSwitcher = ({onHatChanged}) => (
     <div>
         Select a hat: <select onChange={(e) => onHatChanged(e.target.value)}>
-            <option value="cap">Cap</option>
-            <option value="pirate">Pirate</option>
-            <option value="harry-potter">Harry Potter</option>
-            <option value="propeller">Propeller</option>
-            <option value="leprecon">Leprecon</option>
-        </select>
+        <option value="cap">Cap</option>
+        <option value="pirate">Pirate</option>
+        <option value="harry-potter">Harry Potter</option>
+        <option value="propeller">Propeller</option>
+        <option value="leprecon">Leprecon</option>
+    </select>
     </div>
 );
 
@@ -143,7 +142,7 @@ const ContactsList = createReactClass({
         return (
             <div className="contacts">
                 <div className="input-group d-block m-x-auto">
-                    <input type="text" placeholder="Search by name..." className="search-field" onChange={this.handleSearch} />
+                    <input type="text" placeholder="Search by name..." className="search-field" onChange={this.handleSearch}/>
                 </div>
                 <br/>
                 <ul className="contacts-list">
