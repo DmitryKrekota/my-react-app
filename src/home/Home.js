@@ -5,13 +5,14 @@ import logo from './../logo.svg';
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {hat: 'cap'}
+        this.state = {hat: 'cap'};
     }
 
     render() {
         const onHatChanged = (hat) => {
             this.setState({hat});
         };
+
         return (
             <div className="App">
                 <div className="App-header">
@@ -38,27 +39,29 @@ class Home extends Component {
 
 const Hat = ({type}) => {
     let url = '';
+
     switch (type) {
-        case 'cap':
-            url = '//i.imgur.com/98qjQGt.png';
-            break;
-        case 'pirate':
-            url = '//i.imgur.com/c2Pt5t0.png';
-            break;
-        case 'harry-potter':
-            url = '//i.imgur.com/WUgXevl.png';
-            break;
-        case 'propeller':
-            url = '//i.imgur.com/tAoaDqe.png';
-            break;
-        case 'leprecon':
-            url = '//i.imgur.com/vFBUhG4.png';
-            break;
-        default :
-            url = '';
-            break;
+    case 'cap':
+        url = '//i.imgur.com/98qjQGt.png';
+        break;
+    case 'pirate':
+        url = '//i.imgur.com/c2Pt5t0.png';
+        break;
+    case 'harry-potter':
+        url = '//i.imgur.com/WUgXevl.png';
+        break;
+    case 'propeller':
+        url = '//i.imgur.com/tAoaDqe.png';
+        break;
+    case 'leprecon':
+        url = '//i.imgur.com/vFBUhG4.png';
+        break;
+    default :
+        url = '';
+        break;
     }
-    return <img src={url} alt="hat" className="hat"/>
+
+    return <img src={url} alt="hat" className="hat"/>;
 };
 
 const Thinker = () => (
@@ -74,13 +77,14 @@ const ThinkerWithHat = ({hat}) => (
 
 const HatSwitcher = ({onHatChanged}) => (
     <div>
-        Select a hat: <select onChange={(e) => onHatChanged(e.target.value)}>
-        <option value="cap">Cap</option>
-        <option value="pirate">Pirate</option>
-        <option value="harry-potter">Harry Potter</option>
-        <option value="propeller">Propeller</option>
-        <option value="leprecon">Leprecon</option>
-    </select>
+        Select a hat:
+        <select onChange={(e) => onHatChanged(e.target.value)}>
+            <option value="cap">Cap</option>
+            <option value="pirate">Pirate</option>
+            <option value="harry-potter">Harry Potter</option>
+            <option value="propeller">Propeller</option>
+            <option value="leprecon">Leprecon</option>
+        </select>
     </div>
 );
 
@@ -132,8 +136,10 @@ const ContactsList = createReactClass({
         let searchQuery = event.target.value.toLowerCase();
         let displayedContacts = CONTACTS.filter(function(el) {
             let searchValue = el.name.toLowerCase();
+
             return searchValue.indexOf(searchQuery) !== -1;
         });
+
         this.setState({
             displayedContacts: displayedContacts
         });

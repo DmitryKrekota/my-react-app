@@ -1,7 +1,7 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import Home from '../home/Home'
-import About from '../about/About'
+import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import Home from '../home/Home';
+import About from '../about/About';
 
 const Main = () => (
     <main>
