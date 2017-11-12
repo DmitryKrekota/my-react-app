@@ -7,6 +7,7 @@ const Header = () => (
             <div className="navbar-nav mra-navbar-nav">
                 <Link className="nav-item nav-link" to="/">Home</Link>
                 <Link className="nav-item nav-link" to="/about">About</Link>
+                <Link className="nav-item nav-link" to="/undo-redo">Undo/Redo</Link>
             </div>
         </nav>
     </header>
