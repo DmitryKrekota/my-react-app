@@ -8,7 +8,7 @@ let Color = createReactClass({
         let divStyle = {background: this.props.type};
 
         if (this.props.type === this.props.selected) {
-            divStyle.border = '2px solid #ccc';
+            divStyle.border = '3px solid #24d25a';
         }
 
         return (
@@ -41,12 +41,13 @@ let Draw = createReactClass({
     },
 
     updateColor: function(color) {
-        this.setState({'color': color});
+        this.setState({color: color});
     },
 
     render: function() {
         return (
-            <div>
+            <div className="draw">
+                <h4>Colors:</h4>
                 <Colors colors={this.state.colors} select={this.updateColor} selected={this.state.color}/>
             </div>
         );
