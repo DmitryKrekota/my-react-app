@@ -69,3 +69,25 @@ body {
     height: 30px;
     cursor: pointer;
 }
+
+.grid {
+    width: 5px;
+    height: 5px;
+    cursor: pointer;
+    border: 0 solid rgb(238, 238, 238);
+    border-image: initial;
+    background: rgb(255, 255, 255);
+    user-select: none;
+}
+
+.gridRow {
+    float: left;
+}
+
+.draw {
+    display: block;
+    width: 322px;
+    float: left;
+    border: 1px solid rgb(238, 238, 238);
+    border-image: initial;
+}
