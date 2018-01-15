@@ -1,14 +1,15 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import Immutable from 'immutable';
-import { _ } from 'underscore';
 
 let colors = ['#f44336', '#00bcd4', '#3f51b5', '#009688', '#cddc39', '#ffc107', '#607d8b', '#000'];
 
-let grid = _.map(_.range(64), (index) => {
-    return {id: index, grids: _.map(_.range(64), index => {
+let grid = Array.from(Array(64)).map((value, index) => {
+    return {
+        id: index, grids: Array.from(Array(64)).map((value, index) => {
             return {id: index, color: false};
-        })}
+        })
+    }
 });
 
 let Color = createReactClass({
@@ -16,18 +17,17 @@ let Color = createReactClass({
         let divStyle = {background: this.props.type};
 
         if (this.props.type === this.props.selected) {
-            divStyle.border = '3px solid #24d25a';
+            divStyle.boxShadow = '0 0 0 1px #fff,0 0 0 2px #659be0';
         }
 
         return (
-            <div className="color" style={divStyle} onClick={this.props.select.bind(null, this.props.type)}>&nbsp;</div>
+            <button className="color" style={divStyle} onClick={this.props.select.bind(null, this.props.type)}>&nbsp;</button>
         );
     }
 });
 
 let Cell = createReactClass({
-
-    shouldComponentUpdate: function(nextProps, nextState) {
+    shouldComponentUpdate: function(nextProps) {
         return this.props.color !== nextProps.color;
     },
 
@@ -40,7 +40,7 @@ let Cell = createReactClass({
 
         return (
             <div style={divStyle}
-                 onMouseOver={this.props.onClick.bind(null, this.props.rowId, this.props.columnId )}
+                 onMouseOver={this.props.onClick.bind(null, this.props.rowId, this.props.columnId)}
                  className="grid"
                  id={this.props.columnId}>&nbsp;
             </div>
@@ -72,7 +72,7 @@ let Drawing = createReactClass({
     render: function() {
         let rows = this.props.grid.map((row, i) => {
             return (
-                <Row row={row} key={i} onClick={this.props.onClick} />
+                <Row row={row} key={i} onClick={this.props.onClick}/>
             );
         }).toArray();
 
@@ -88,7 +88,7 @@ let Drawing = createReactClass({
 
 let Colors = createReactClass({
     render: function() {
-        let colors =  this.props.colors.map((color, i)=> {
+        let colors = this.props.colors.map((color, i) => {
             return <Color type={color} key={i} select={this.props.select} selected={this.props.selected}/>
         });
 
@@ -104,7 +104,7 @@ let History = createReactClass({
     render: function() {
         return (
             <div className="history">
-                {this.props.data.map((item, i)=> {
+                {this.props.data.map((item, i) => {
                     return <div key={i}>Updated Grid</div>;
                 })}
             </div>
@@ -130,7 +130,7 @@ let Draw = createReactClass({
             this.setState({future: Immutable.List()});
         }
 
-        if (! this.state.drawing) {
+        if (!this.state.drawing) {
             this.setState({history: this.state.history.push(this.state.items)});
         }
     },
@@ -140,7 +140,7 @@ let Draw = createReactClass({
     },
 
     onClick: function(rowId, colId) {
-        if (! this.state.drawing) return;
+        if (!this.state.drawing) return;
         let newItems = this.state.items.updateIn([rowId, 'grids', colId], val => {
             return val.set('color', this.state.color);
         });
@@ -171,15 +171,28 @@ let Draw = createReactClass({
 
     render: function() {
         return (
-            <div className="draw">
-                <h4>Colors:</h4>
-                <Colors colors={this.state.colors} select={this.updateColor} selected={this.state.color}/>
-                <hr/>
-                <Drawing onClick={this.onClick} grid={this.state.items} setDrawing={this.setDrawing}/>
-                <hr/>
-                <button className="btn btn-default" disabled={this.state.history.size < 1} onClick={this.undo}>Undo</button>
-                <button className="btn btn-default" disabled={this.state.future.size < 1} onClick={this.redo}>Redo</button>
-                <History data={this.state.history} />
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <h4>Colors:</h4>
+                            <Colors colors={this.state.colors} select={this.updateColor} selected={this.state.color}/>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                            <Drawing onClick={this.onClick} grid={this.state.items} setDrawing={this.setDrawing}/>
+                        </div>
+                        <div className="col text-center">
+                            <div className="btn-group">
+                                <button className="btn btn-primary" disabled={this.state.history.size < 1} onClick={this.undo}>Undo</button>
+                                <button className="btn btn-primary" disabled={this.state.future.size < 1} onClick={this.redo}>Redo</button>
+                            </div>
+                            <History data={this.state.history}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

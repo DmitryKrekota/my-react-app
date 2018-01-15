@@ -54,10 +54,6 @@ body {
     padding: .5rem;
 }
 
-.draw {
-    margin: 5px;
-}
-
 .colors {
     display: flex;
     flex-direction: row;
@@ -86,8 +82,13 @@ body {
 
 .draw {
     display: block;
-    width: 322px;
-    float: left;
-    border: 1px solid rgb(238, 238, 238);
-    border-image: initial;
+    width: 323px;
+    height: 323px;
+    border: 1px solid rgba(0,0,0,.1);
+    margin: 0 auto;
+}
+
+.color {
+    border: 0;
+    outline: 0;
 }
