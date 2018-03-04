@@ -3,13 +3,13 @@
         "eslint:recommended",
         "react-app"
     ],
-    "env": {
-        "es6": true
+    "parserOptions": {
+        "ecmaVersion": 2017
     },
     "rules": {
         "semi": [
             1,
-            "always"
+            "never"
         ],
         "no-mixed-spaces-and-tabs": [
             1

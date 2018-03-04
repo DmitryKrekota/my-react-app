@@ -1,7 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-const About = () => (
-    <div>Hello. My name is Dmitry.</div>
-);
+const About = () => <div>Hello. My name is Dmitry.</div>
 
-export default About;
+export default About
