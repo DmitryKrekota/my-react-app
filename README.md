@@ -1,1 +1,0 @@
-[Demo](https://dmitrykrekota.github.io/my-react-app/build)
